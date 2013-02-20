@@ -19,8 +19,8 @@ public class InvoiceTest {
 		Invoice invoice = null;
 		try {
 			// Set up fixture
-			billingAddress = new Address("12 rue Pierre Dupont", "Grenoble", "Isère", "38000", "Canada");
-			shippingAddress = new Address("12 rue Pierre Dupont", "Grenoble", "Isère", "38000", "Canada");
+			billingAddress = new Address("12 rue Robert Dumont", "Grenoble", "Isère", "38000", "France");
+			shippingAddress = new Address("12 rue Robert Dumont", "Grenoble", "Isère", "38000", "France");
 			customer = new Customer(99, "Auguste", "Blanc", new BigDecimal("30"), billingAddress, shippingAddress);
 			product = new Product(88, "TV", new BigDecimal("19.99"));
 			invoice = new Invoice(customer);
@@ -36,7 +36,7 @@ public class InvoiceTest {
 				assertEquals("quant", 5, actItem.getQuantity());
 				assertEquals("discount", new BigDecimal("30"), actItem.getPercentDiscount());
 				assertEquals("unit price", new BigDecimal("19.99"), actItem.getUnitPrice());
-				assertEquals("extended price", new BigDecimal("69.96"), actItem.getUnitPrice());
+				assertEquals("extended price", new BigDecimal("69.96"), actItem.getExtendedPrice());
 			} else {
 				assertTrue("Invoice should have 1 item", false);
 			}
