@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Random;
 
 import org.junit.Test;
 
@@ -51,8 +52,15 @@ public class InvoiceTest {
 	}
 
 	private void deleteObject(Object object) {
-		// TODO Auto-generated method stub
+		// some logic to delete object from database
 		
+		sometimesSomethingGoesWrong();
+	}
+
+	private void sometimesSomethingGoesWrong() {
+		if (new Random(70).nextInt() == 37) {
+			throw new DatabaseException();
+		}
 	}
 
 }
