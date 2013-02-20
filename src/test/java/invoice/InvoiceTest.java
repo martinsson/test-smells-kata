@@ -27,7 +27,16 @@ public class InvoiceTest {
 			//Exercise SUT
 			invoice.addItemQuantity(product, 5);
 			// Verify outcome
-			List<LineItem> liteItems = invoice.getLineItems();
+			List<LineItem> lineItems = invoice.getLineItems();
+			if (lineItems.size() == 1) {
+				LineItem actItem = lineItems.get(0);
+				assertEquals("inv",  invoice, actItem.getInv());
+				assertEquals("prod", product, actItem.getProd());
+				assertEquals("quant", 5, actItem.getQuantity());
+				assertEquals("discount", new BigDecimal("30"), actItem.getPercentDiscount());
+				assertEquals("unit price", new BigDecimal("19.99"), actItem.getUnitPrice());
+				assertEquals("extended price", new BigDecimal("69.96"), actItem.getUnitPrice());
+			}
 			
 		} finally {
 			// TODO: handle exception
