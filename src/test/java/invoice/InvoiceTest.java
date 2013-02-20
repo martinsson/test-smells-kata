@@ -2,6 +2,8 @@ package invoice;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
+
 import org.junit.Test;
 
 public class InvoiceTest {
@@ -14,6 +16,12 @@ public class InvoiceTest {
 		Product product = null;
 		Invoice invoice = null;
 		try {
+			// Set up fixture
+			billingAddress = new Address("12 rue Pierre Dupont", "Grenoble", "Isère", "38000", "Canada");
+			shippingAddress = new Address("12 rue Pierre Dupont", "Grenoble", "Isère", "38000", "Canada");
+			customer = new Customer(99, "Auguste", "Blanc", new BigDecimal("30"), billingAddress, shippingAddress);
+			product = new Product(88, "TV", new BigDecimal("19.99"));
+			invoice = new Invoice(customer);
 			
 		} finally {
 			// TODO: handle exception
