@@ -36,11 +36,23 @@ public class InvoiceTest {
 				assertEquals("discount", new BigDecimal("30"), actItem.getPercentDiscount());
 				assertEquals("unit price", new BigDecimal("19.99"), actItem.getUnitPrice());
 				assertEquals("extended price", new BigDecimal("69.96"), actItem.getUnitPrice());
+			} else {
+				assertTrue("Invoice should have 1 item", false);
 			}
 			
 		} finally {
-			// TODO: handle exception
+			// Teardown
+			deleteObject(invoice);
+			deleteObject(product);
+			deleteObject(customer);
+			deleteObject(billingAddress);
+			deleteObject(shippingAddress);
 		}
+	}
+
+	private void deleteObject(Object object) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
